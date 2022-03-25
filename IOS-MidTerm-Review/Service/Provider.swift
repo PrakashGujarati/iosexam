@@ -11,7 +11,7 @@ import Foundation
 class StudentProvider {
     
     
-    static var allStudents : [Student] = []
+    static var allStudents : [Student] = [Student(id: 1, name: "AMAN", email: "Aman@gmail.com"),Student(id: 2, name: "BOMAN", email: "boman@gmail.com")]
     
     
     static func addStudent( student : Student ){

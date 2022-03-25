@@ -22,7 +22,7 @@ class StudentListViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        lblUsername.text = "Hello"
+        lblUsername.text = "Hello" + " \(userName)"
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -31,14 +31,14 @@ class StudentListViewController: UIViewController, UITableViewDelegate, UITableV
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return StudentProvider.allStudents.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        cell.textLabel?.text = StudentProvider.allStudents[indexPath.row].getEmail()
+        cell.textLabel?.text = StudentProvider.allStudents[indexPath.row].getName()
         
         return cell
         
@@ -67,7 +67,7 @@ class StudentListViewController: UIViewController, UITableViewDelegate, UITableV
             return
         }
         
-        if segue.identifier == Segue.toStudentInfo {
+        if segue.identifier == Segue.toStudentInfoEditing {
             /// Update/delete operations
             
             let studentInfo = (segue.destination as! StudentInfoViewController)
